@@ -3,7 +3,7 @@ const app = express();
 
 //Registra ejs como motor de plantillas
 app.set('view engine', 'ejs');
-//app.set('views', path.join(__dirname, '/views'));
+//**ESTA LINEA ME DA ERROR, SI LA HAGO COMO COMENTARIO, ME FUNCIONA TODO */
 app.set('views', path.join(__dirname, '/views'));
 
 
