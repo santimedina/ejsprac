@@ -1,21 +1,46 @@
 const express = require('express');
 const app = express();
+const path = require('path')
 
-//Registra ejs como motor de plantillas
+// Registra ejs como motor de plantillas
 app.set('view engine', 'ejs');
-//**ESTA LINEA ME DA ERROR, SI LA HAGO COMO COMENTARIO, ME FUNCIONA TODO */
 app.set('views', path.join(__dirname, '/views'));
 
 
-app.get('/', (req, res) => {
-    res.send('Bienvenido a la pagina principal!!!!')
-});
 
-//Registra como publica/static la carpeta public
+
+
+// Registra como publica/static la carpeta public
 app.use(express.static('public'));
 
 // Registra carpetas estaticas con "prefijos"
-app.use('/prefijo', express.static('publica'));
+app.use('/desktop', express.static('desktop'));
+app.use('/mobile', express.static('mobile'));
+
+app.get('/', (req, res) => {
+    res.render('index', {
+        usuario: [
+            {
+                name: "Santiago",
+                email: "sjmedi.97@gmail.com"
+            },
+            {
+                name: "Julian",
+                email: "Julian@gmail.com"
+            },
+            {
+                name: "Victoria",
+                email: "Victoria@gmail.com"
+            }
+
+
+
+        ]
+    });
+
+
+})
+
 
 
 app.get('/index', (req, res) => {
